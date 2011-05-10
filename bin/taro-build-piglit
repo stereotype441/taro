@@ -1,7 +1,6 @@
 #!/bin/bash
 
-build_dir=$TARO_PREFIX/build/org.freedesktop.piglit
+build_dir=$TARO_ROOT/build/piglit
 num_jobs=$(getconf _NPROCESSORS_ONLN)
-
 cd $build_dir || exit 1
 make -j$num_jobs
