@@ -1,0 +1,27 @@
+#!/bin/bash
+
+source $TARO_CORE/taro.conf
+
+source_dir=$TARO_ROOT/source/mesa
+build_dir=$TARO_ROOT/build/mesa
+
+if [ -d $build_dir ]; then
+    rm -r $build_dir || exit 1
+fi
+mkdir -p $build_dir || exit 1
+cd $build_dir || exit 1
+lndir $source_dir || exit 1
+
+./autogen.sh \
+    --disable-gallium \
+    --disable-gles1 \
+    --disable-glut \
+    --enable-debug \
+    --enable-egl \
+    --enable-egl \
+    --enable-gles2 \
+    --enable-selinux \
+    --prefix=$TARO_INSTALL_PREFIX \
+    --with-dri-drivers=swrast,i915,i965 \
+    CFLAGS="-O0 $CFLAGS" \
+    CXXFLAGS="-O0 $CXXFLAGS"

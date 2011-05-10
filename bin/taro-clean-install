@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if ! [ -d "$TARO_PREFIX" ]; then
+    echo "no!"
+    exit 1
+fi
+
+for d in include lib share; do
+    if [ -d "$TARO_PREFIX/$d" ]; then
+        rm -r $TARO_PREFIX/$d
+    fi
+done

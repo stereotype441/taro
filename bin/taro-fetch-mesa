@@ -1,0 +1,17 @@
+#!/bin/bash
+
+source $TARO_CORE/taro.conf
+
+source_dir="$TARO_ROOT/source/mesa"
+git_origin_path="$HOME/source/org.freedesktop.mesa"
+git_branch="7.9-EGL_MESA_video_sync"
+
+if [ -d $source_dir ]; then
+    cd $source_dir || exit 1
+    git checkout HEAD^ || exit 1
+    git fetch origin +$git_branch:$git_branch || exit 1
+    git checkout $git_branch || exit 1
+else
+    mkdir -p $source_dir || exit 1
+    git clone --branch $git_branch $git_origin_path $source_dir || exit 1
+fi

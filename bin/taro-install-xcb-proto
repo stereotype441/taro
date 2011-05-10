@@ -1,0 +1,5 @@
+#!/bin/bash
+
+build_dir=$TARO_ROOT/build/xcb-proto
+cd $build_dir || exit 1
+make install

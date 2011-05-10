@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source $TARO_CORE/taro.conf
+
+source_dir="$TARO_ROOT/source/piglit"
+git_origin_path="$HOME/source/org.freedesktop.piglit"
+git_branch="master"
+
+if [ -d $source_dir ]; then
+    cd $source_dir || exit 1
+    git pull -r origin $git_branch || exit 1
+else
+    mkdir -p $source_dir || exit 1
+    git clone --branch $git_branch $git_origin_path $source_dir || exit 1
+fi

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source $TARO_CORE/taro.conf
+
+source_dir=$TARO_ROOT/source/xcb-proto
+build_dir=$TARO_ROOT/build/xcb-proto
+
+if [ -d $build_dir ]; then
+    rm -r $build_dir || exit 1
+fi
+mkdir -p $build_dir || exit 1
+cd $build_dir || exit 1
+lndir $source_dir || exit 1
+
+./autogen.sh \
+    --prefix=$TARO_INSTALL_PREFIX

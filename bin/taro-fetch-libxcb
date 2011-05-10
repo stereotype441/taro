@@ -1,0 +1,18 @@
+#!/bin/bash
+
+source $TARO_CORE/taro.conf
+
+source_dir="$TARO_ROOT/source/libxcb"
+git_origin_path="$HOME/source/org.freedesktop.xcb.libxcb"
+git_tag="1.7"
+
+if [ -d $source_dir ]; then
+    cd $source_dir || exit 1
+    git fetch origin || exit 1
+else
+    mkdir -p $source_dir || exit 1
+    git clone --no-checkout $git_origin_path $source_dir || exit 1
+fi
+
+cd $source_dir
+git checkout $git_tag || exit 1

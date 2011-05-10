@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source $TARO_CORE/taro.conf
+
+build_dir=$TARO_ROOT/build/libxcb
+num_jobs=$(getconf _NPROCESSORS_ONLN)
+cd $build_dir || exit 1
+make -j$num_jobs
