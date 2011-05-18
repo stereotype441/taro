@@ -21,6 +21,7 @@ lndir $source_dir || exit 1
     --enable-egl \
     --enable-gles2 \
     --enable-selinux \
+    --enable-texture-float \
     --prefix=$TARO_INSTALL_PREFIX \
     --with-dri-drivers=swrast,i915,i965 \
     CFLAGS="-O0 $CFLAGS" \
